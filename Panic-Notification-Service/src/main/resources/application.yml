@@ -1,0 +1,14 @@
+spring:
+    application:
+        name: Panic-Notification-Service
+
+    jpa:
+        database: POSTGRESQL
+        show-sql: true
+        hibernate:
+            ddl-auto: create-drop
+    datasource:
+        url: jdbc:postgresql://localhost:5432/panicDB
+        username: panicDB
+        password: password
+        driverClassName: org.postgresql.Driver

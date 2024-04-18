@@ -1,0 +1,12 @@
+version: '2.2'
+services:
+  panicDB:
+    image: postgres:14.1-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_ROOT_USER: panicDB
+      POSTGRES_ROOT_PASSWORD: password
+      POSTGRES_DATABASE: panicDB
+      POSTGRES_USER: panicDB
+      POSTGRES_PASSWORD: password

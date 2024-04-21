@@ -1,25 +1,24 @@
 package com.panic.panicnotificationservice.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.io.Serializable;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Getter
 @Setter
 @Entity
 @Table(name = "person")
-public class Person implements Serializable {
-    private static final long serialVersionUID = 5791537759901130504L;
+public class Person {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
 
+    @Column(name = "name")
+    private String name;
+
+    @ManyToMany(mappedBy = "person")
+    private Set<Client> clients = new LinkedHashSet<>();
 }

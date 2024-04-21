@@ -1,4 +1,4 @@
-package com.panic.panicnotificationservice.models;
+package com.panic.panicnotificationservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

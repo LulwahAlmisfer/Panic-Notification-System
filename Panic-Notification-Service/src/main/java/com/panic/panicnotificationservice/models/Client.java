@@ -47,6 +47,6 @@ public class Client {
     @JoinTable(name = "client_person",
             joinColumns = @JoinColumn(name = "client_id"),
             inverseJoinColumns = @JoinColumn(name = "person_id"))
-    private Set<Person> people = new LinkedHashSet<>();
+    private Set<Person> person = new LinkedHashSet<>();
 
 }

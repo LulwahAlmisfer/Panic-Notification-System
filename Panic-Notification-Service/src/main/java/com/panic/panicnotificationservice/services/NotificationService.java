@@ -34,7 +34,7 @@ public class NotificationService {
                         .orElseThrow(() -> new NoSuchElementException("Notification with ID " + id + " not found")))
                 .collect(Collectors.toSet());
 
-        client.setNotifications(notifications);
+        client.getNotifications().addAll(notifications);
         clientRepository.save(client);
     }
 

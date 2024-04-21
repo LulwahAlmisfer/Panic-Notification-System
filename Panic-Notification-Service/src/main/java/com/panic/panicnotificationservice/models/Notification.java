@@ -1,10 +1,7 @@
 package com.panic.panicnotificationservice.models;
 
-import com.panic.panicnotificationservice.models.Client;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
@@ -20,9 +17,8 @@ import java.util.Set;
 @Table(name = "notification")
 public class Notification {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Integer id;
+    private String id;
 
     @Column(name = "value", nullable = false, length = Integer.MAX_VALUE)
     private String value;

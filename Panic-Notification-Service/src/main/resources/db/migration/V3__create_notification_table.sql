@@ -1,4 +1,4 @@
 CREATE TABLE notification (
-    id    serial PRIMARY KEY,
+    id     varchar PRIMARY KEY,
     value  varchar NOT NULL
 );

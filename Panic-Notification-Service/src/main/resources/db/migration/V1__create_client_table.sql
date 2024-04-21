@@ -1,5 +1,5 @@
 CREATE TABLE client (
-    serial PRIMARY KEY,
+    id                     serial PRIMARY KEY,
     name                   varchar NOT NULL,
     url                    varchar NOT NULL,
     method                 varchar NOT NULL,

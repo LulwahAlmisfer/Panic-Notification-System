@@ -1,5 +1,6 @@
 package com.panic.panicnotificationservice.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -44,6 +45,7 @@ public class Client {
     private Set<Notification> notifications = new LinkedHashSet<>();
 
     @ManyToMany
+    @JsonIgnore
     @JoinTable(name = "client_person",
             joinColumns = @JoinColumn(name = "client_id"),
             inverseJoinColumns = @JoinColumn(name = "person_id"))

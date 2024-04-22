@@ -20,5 +20,5 @@ public class Person {
     private String name;
 
     @ManyToMany(mappedBy = "person")
-    private Set<Client> clients = new LinkedHashSet<>();
+    private Set<Client> client = new LinkedHashSet<>();
 }

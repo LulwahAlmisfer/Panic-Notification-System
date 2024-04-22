@@ -4,6 +4,7 @@ import com.panic.panicnotificationservice.models.Client;
 import com.panic.panicnotificationservice.models.Person;
 import com.panic.panicnotificationservice.repositories.ClientRepository;
 import com.panic.panicnotificationservice.repositories.PersonRepository;
+import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -49,5 +50,15 @@ public class ClientService {
           client.getPerson().addAll(personSet);
           clientRepository.save(client);
 
+    }
+
+   public  Set<Client> getClients(Integer personId){
+        Optional<Person> optionalPerson = personRepository.findPersonById(personId);
+
+        if (optionalPerson.isEmpty()) {
+            throw new NoSuchElementException("Person with ID " + personId + " not found");
+        }
+
+        return optionalPerson.get().getClient();
     }
 }

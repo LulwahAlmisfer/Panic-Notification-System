@@ -1,5 +1,6 @@
 package com.panic.panicnotificationservice.controllers;
 
+import com.panic.panicnotificationservice.models.Notification;
 import com.panic.panicnotificationservice.services.NotificationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,11 @@ public class NotificationController {
     public ResponseEntity addNotifications(@RequestBody Set<String> notificationIds, @RequestParam Integer clientId) {
         notificationService.addNotifications(notificationIds, clientId);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping
+    public ResponseEntity<Set<Notification>> addNotifications(@RequestParam Integer clientId) {
+        return ResponseEntity.ok().body(notificationService.getNotifications(clientId));
     }
 
 }

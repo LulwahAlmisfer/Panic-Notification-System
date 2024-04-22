@@ -38,4 +38,14 @@ public class NotificationService {
         clientRepository.save(client);
     }
 
+    public Set<Notification> getNotifications(Integer clientId) {
+        log.info("getNotifications: get notifications for client id {}", clientId);
+        Optional<Client> optionalClient = clientRepository.findById(clientId);
+        if (!optionalClient.isPresent()) {
+            throw new NoSuchElementException("Client with ID " + clientId + " not found");
+        }
+        Client client = optionalClient.get();
+        return notificationRepository.findByClients(client);
+    }
+
 }

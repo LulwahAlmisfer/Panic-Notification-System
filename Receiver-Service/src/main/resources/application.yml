@@ -1,0 +1,5 @@
+spring:
+    application:
+        name: Receiver-Service
+    rabbitmq:
+        addresses: localhost:5672

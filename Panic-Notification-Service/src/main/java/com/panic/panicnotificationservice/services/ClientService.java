@@ -1,15 +1,13 @@
 package com.panic.panicnotificationservice.services;
 
 import com.panic.panicnotificationservice.models.Client;
+import com.panic.panicnotificationservice.models.ClientDto;
 import com.panic.panicnotificationservice.models.Person;
 import com.panic.panicnotificationservice.repositories.ClientRepository;
 import com.panic.panicnotificationservice.repositories.PersonRepository;
-import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -60,5 +58,22 @@ public class ClientService {
         }
 
         return optionalPerson.get().getClient();
+    }
+
+    public ClientDto getCallbackInfo(Integer clientId){
+
+        Optional<Client> optionalClient = clientRepository.findById(clientId);
+
+        if (optionalClient.isEmpty()) {
+            throw new NoSuchElementException("Client with ID " + clientId + " not found");
+        }
+        Client client = optionalClient.get();
+
+        return ClientDto.builder()
+                .name(client.getName())
+                .url(client.getUrl())
+                .method(client.getMethod())
+                .authorizationHeader(client.getAuthorizationHeader())
+                .build();
     }
 }

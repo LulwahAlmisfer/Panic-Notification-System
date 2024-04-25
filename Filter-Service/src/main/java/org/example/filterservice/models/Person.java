@@ -8,9 +8,8 @@ import lombok.*;
 @Builder
 public class Person {
 
-    private String id;
+    private Integer id;
     private String name;
     private String reason;
-    private String test;
 
 }

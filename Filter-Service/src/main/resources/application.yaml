@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: Filter-Service
+rabbit:
+  mq:
+    pre-filter-queue: "pre-filter"
+    pre-filter-routing-key: "pre-filter-key"
+    post-filter-queue: "post-filter"
+    post-filter-routing-key: "post-filter-key"
+    exchange: "exchange"

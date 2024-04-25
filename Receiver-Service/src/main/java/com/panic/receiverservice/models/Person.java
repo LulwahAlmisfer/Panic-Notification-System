@@ -1,4 +1,4 @@
-package com.panic.receiverservice;
+package com.panic.receiverservice.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,5 +1,7 @@
-package com.panic.receiverservice;
+package com.panic.receiverservice.controllers;
 
+import com.panic.receiverservice.models.Person;
+import com.panic.receiverservice.config.MQConfig;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,7 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/v1/client")
-public class Controller {
+public class ReceiveController {
 
     @Autowired
     private RabbitTemplate template;

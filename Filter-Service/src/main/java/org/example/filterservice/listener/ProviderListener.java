@@ -10,7 +10,6 @@ import org.example.filterservice.publisher.FilterPublisher;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
-import java.util.NoSuchElementException;
 import java.util.Set;
 
 @Component
@@ -32,6 +31,11 @@ public class ProviderListener {
 
         Set<Client> clients = panicNotificationClient.getClient(person.getId());
 
+        if (clients.isEmpty()) {
+            log.info("No clients found for personId: {}", person.getId());
+            return;
+        }
+
             for (Client client : clients) {
 
                 Message message = Message.builder()
@@ -43,7 +47,7 @@ public class ProviderListener {
                         .clientUrl(client.getUrl())
                         .clientAuthHeader(client.getAuthorizationHeader())
                         .clientMethod(client.getMethod()).build();
-                log.info("getClients:: generate message info for personId: {} and clientId {}", person.getId(), client.getId());
+                log.info("generateMessage:: generate message info for personId: {} and clientId: {}", person.getId(), client.getId());
 
                 filterPublisher.publishMessage(message);
 

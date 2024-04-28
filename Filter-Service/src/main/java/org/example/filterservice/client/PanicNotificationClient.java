@@ -5,7 +5,10 @@ import org.example.filterservice.client.models.Client;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
+import org.springframework.web.client.RestClientException;
 
+import java.util.Collections;
+import java.util.NoSuchElementException;
 import java.util.Set;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON;
@@ -22,14 +25,23 @@ public class PanicNotificationClient {
 
     public Set<Client> getClient(Integer personId) {
 
-        Set<Client> clients = restClient.get()
-                .uri(baseURL + clientURL + "/clients" + "?personId=" + personId)
-                .accept(APPLICATION_JSON)
-                .retrieve()
-                .body(new ParameterizedTypeReference<Set<Client>>() {});
-        log.info("getClient:: set of clients {} for personId {}", clients, personId);
+        try {
+            Set<Client> clients = restClient.get()
+                    .uri(baseURL + clientURL + "/clients" + "?personId=" + personId)
+                    .accept(APPLICATION_JSON)
+                    .retrieve()
+                    .body(new ParameterizedTypeReference<Set<Client>>() {
+                    });
+            log.info("getClient:: set of clients {} for personId: {}", clients, personId);
 
-        return clients;
+            return clients;
+        } catch (RestClientException e) {
+            log.error("No clients found for personId {}: {}", personId, e.getMessage());
+            return Collections.emptySet();
+        } catch (Exception e) {
+            log.error("Service call failed for personId {}: {}", personId, e.getMessage());
+            throw new RuntimeException("Service communication error", e);
+        }
     }
 
 }

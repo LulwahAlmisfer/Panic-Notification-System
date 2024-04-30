@@ -2,6 +2,7 @@ package org.example.filterservice.client;
 
 import lombok.extern.slf4j.Slf4j;
 import org.example.filterservice.client.models.Client;
+import org.example.filterservice.client.models.Notification;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
@@ -42,6 +43,25 @@ public class PanicNotificationClient {
             log.error("Service call failed for personId {}: {}", personId, e.getMessage());
             throw new RuntimeException("Service communication error", e);
         }
+    }
+    public Set<Notification> getNotifications(Integer clientId) {
+
+        try {
+            Set<Notification> notifications = restClient.get()
+                    .uri(baseURL + "/v1/notification" + "?clientId=" + clientId)
+                    .accept(APPLICATION_JSON)
+                    .retrieve()
+                    .body(new ParameterizedTypeReference<Set<Notification>>() {
+                    });
+            log.info("getClient:: set of clients {} for clientId: {}", notifications, clientId);
+
+            return notifications;
+
+        } catch (Exception e) {
+            log.error("Service call failed for clientId {}: {}", clientId, e.getMessage());
+            throw new RuntimeException("Service communication error", e);
+        }
+
     }
 
 }

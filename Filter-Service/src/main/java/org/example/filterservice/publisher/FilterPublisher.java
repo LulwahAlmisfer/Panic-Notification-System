@@ -1,7 +1,7 @@
 package org.example.filterservice.publisher;
 
 import lombok.extern.slf4j.Slf4j;
-import org.example.filterservice.models.Person;
+import org.example.filterservice.models.Message;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,9 +21,9 @@ public class FilterPublisher {
     private RabbitTemplate template;
 
 
-    public void publishMessage(Person person) {
+    public void publishMessage(Message message) {
         try {
-            template.convertAndSend(exchange, postFilterRoutingKey, person);
+            template.convertAndSend(exchange, postFilterRoutingKey, message);
             log.info("publishMessage:: message published successfully");
         } catch (Exception e) {
 

@@ -1,6 +1,8 @@
 spring:
   application:
     name: Filter-Service
+server:
+  port: 8443
 rabbit:
   mq:
     pre-filter-queue: "pre-filter"

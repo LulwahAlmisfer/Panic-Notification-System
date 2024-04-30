@@ -22,7 +22,7 @@ public class NotificationController {
     }
 
     @GetMapping
-    public ResponseEntity<Set<Notification>> addNotifications(@RequestParam Integer clientId) {
+    public ResponseEntity<Set<Notification>> getNotifications(@RequestParam Integer clientId) {
         return ResponseEntity.ok().body(notificationService.getNotifications(clientId));
     }
 

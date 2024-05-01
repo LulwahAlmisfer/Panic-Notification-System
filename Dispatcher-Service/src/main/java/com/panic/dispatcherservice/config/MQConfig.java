@@ -1,4 +1,4 @@
-package com.panic.dispatcherservice.Config;
+package com.panic.dispatcherservice.config;
 
 import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;

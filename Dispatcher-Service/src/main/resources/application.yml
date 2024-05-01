@@ -3,3 +3,5 @@ spring:
         name: Dispatcher-Service
     rabbitmq:
         addresses: localhost:5672
+server:
+    port: 8443

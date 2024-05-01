@@ -1,17 +1,19 @@
 package com.panic.dispatcherservice.listeners;
 
-import com.panic.dispatcherservice.Config.MQConfig;
-import com.panic.dispatcherservice.models.Person;
+import com.panic.dispatcherservice.client.DispatcherClient;
+import com.panic.dispatcherservice.config.MQConfig;
+import com.panic.dispatcherservice.models.Message;
+import lombok.RequiredArgsConstructor;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
 @Component
-public class MessageListener {
+@RequiredArgsConstructor
+class MessageListener {
 
+    private final DispatcherClient dispatchCallback;
     @RabbitListener(queues = MQConfig.QUEUE)
-    public void listener(Person p) {
-        System.out.println(p);
-         //add callback logic
+    public void listener(Message m) {
+        dispatchCallback.dispatchCallback(m);
     }
-
 }

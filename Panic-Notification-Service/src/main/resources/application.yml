@@ -12,3 +12,5 @@ spring:
         username: panicDB
         password: password
         driverClassName: org.postgresql.Driver
+
+admin-key: a7Dg5zK9xH

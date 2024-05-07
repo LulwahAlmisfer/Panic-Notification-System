@@ -18,4 +18,6 @@ public class ClientDto implements Serializable {
     String url;
     String method;
     String authorizationHeader;
+    String apiKey;
+
 }

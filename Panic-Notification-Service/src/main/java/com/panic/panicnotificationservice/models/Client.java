@@ -15,6 +15,7 @@ import lombok.Setter;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -37,6 +38,8 @@ public class Client {
 
     @Column(name = "authorization_header", length = Integer.MAX_VALUE)
     private String authorizationHeader;
+
+    private String apiKey = String.valueOf(UUID.randomUUID());
 
     @ManyToMany
     @JoinTable(name = "client_notification",

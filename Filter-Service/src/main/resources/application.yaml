@@ -10,3 +10,5 @@ rabbit:
     post-filter-queue: "post-filter"
     post-filter-routing-key: "post-filter-key"
     exchange: "exchange"
+
+admin-key: a7Dg5zK9xH

@@ -17,10 +17,9 @@ public class ClientController {
 
     private final ClientService clientService;
 
-    @PostMapping
-    public ResponseEntity createClient(@RequestBody Client client) {
-        clientService.createClient(client);
-        return ResponseEntity.ok().build();
+    @PostMapping("/create")
+    public ResponseEntity<Client> createClient(@RequestBody Client client) {
+        return ResponseEntity.ok(clientService.createClient(client));
     }
 
     @PostMapping("/add-ids")

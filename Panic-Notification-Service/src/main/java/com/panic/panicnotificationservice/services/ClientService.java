@@ -24,9 +24,10 @@ public class ClientService {
     private final ClientRepository clientRepository;
     private final PersonRepository personRepository;
 
-    public void createClient(Client client) {
+    public Client createClient(Client client) {
         log.info("createClient:: create new client");
         clientRepository.save(client);
+        return client;
     }
 
     public  void addPersons(Set<Person> personSet, Integer clientId) {
@@ -76,4 +77,9 @@ public class ClientService {
                 .authorizationHeader(client.getAuthorizationHeader())
                 .build();
     }
+
+    public boolean isApiKeyExist(String apiKey) {
+       return clientRepository.existsByApiKey(apiKey);
+    }
+
 }

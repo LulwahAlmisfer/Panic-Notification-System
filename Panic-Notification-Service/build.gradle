@@ -28,10 +28,13 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
     runtimeOnly 'org.postgresql:postgresql'
     annotationProcessor 'org.projectlombok:lombok'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-security'
-
+    implementation 'com.google.cloud.sql:postgres-socket-factory:1.2.1'
+   // implementation 'com.google.apis:google-api-services-storage:v1-rev35-1.20.0'
+    //implementation 'org.hibernate:hibernate-entitymanager:5.2.3.Final'
+   // implementation 'org.hibernate.orm:hibernate-core:6.3.1.Final'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 tasks.named('test') {

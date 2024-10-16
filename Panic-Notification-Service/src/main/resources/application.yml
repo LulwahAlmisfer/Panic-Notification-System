@@ -1,16 +1,32 @@
+server:
+  port: ${PORT:8080}
+  servlet:
+    context-path: /Panic-Notification-Service
+
 spring:
     application:
         name: Panic-Notification-Service
 
-    jpa:
-        database: POSTGRESQL
-        show-sql: true
-        hibernate:
-            ddl-auto: update
     datasource:
-        url: jdbc:postgresql://localhost:5432/panicDB
-        username: panicDB
-        password: password
-        driverClassName: org.postgresql.Driver
+            url: ${DB_DATABASE:postgres}
+            username: ${DB_USERNAME:username}
+            password: ${DB_PASSWORD:password}
+            driverClassName: org.postgresql.Driver
+            hikari:
+              minimum-idle: 2
+              maximum-pool-size: 5
+              data-source-properties:
+                socketFactory: com.google.cloud.sql.postgres.SocketFactory
+                cloudSqlInstance: panic-notification-system:us-central1:panicdb
+                enableIamAuth: true
+                sslmode: disable
 
-admin-key: a7Dg5zK9xH
+    jpa:
+      hibernate:
+        ddl-auto: update
+      properties:
+        hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+
+admin-key: ${ADMIN_KEY:a7Dg5zK9xH}
+
+

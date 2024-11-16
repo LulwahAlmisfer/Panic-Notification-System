@@ -19,7 +19,9 @@ import static org.springframework.http.MediaType.APPLICATION_JSON;
 @Slf4j
 public class PanicNotificationClient {
 
-    public static final String baseURL = "http://localhost:8080";
+
+    @Value("${filter-service}")
+    public String baseURL;
     public static final String clientURL = "/v1/client";
     public static final String X_API_KEY = "X-API-KEY";
 

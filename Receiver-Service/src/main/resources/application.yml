@@ -2,4 +2,7 @@ spring:
     application:
         name: Receiver-Service
     rabbitmq:
-        addresses: localhost:5672
+        host: ${RABBITMQ_IP:34.45.188.216}
+        port: 5672
+        username: ${RABBITMQ_USERNAME}
+        password: ${RABBITMQ_PASSWORD}

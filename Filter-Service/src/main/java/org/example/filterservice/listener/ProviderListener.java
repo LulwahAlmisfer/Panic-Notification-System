@@ -23,7 +23,7 @@ public class ProviderListener {
 
     private final PanicNotificationClient panicNotificationClient;
 
-    @RabbitListener(queues = {"${rabbit.mq.pre-filter-queue}"})
+    @RabbitListener(queues = {"${custom.rabbitmq.pre-filter-queue}"})
     public void listener(Person person) {
         log.info("listener:: person from provider: {}", person);
         generateMessage(person);

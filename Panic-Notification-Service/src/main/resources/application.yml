@@ -8,9 +8,9 @@ spring:
         name: Panic-Notification-Service
 
     datasource:
-            url: ${DB_DATABASE:postgres}
-            username: ${DB_USERNAME:username}
-            password: ${DB_PASSWORD:password}
+            url: ${DB_DATABASE:jdbc:postgresql://35.193.197.181:5432/postgres?cloudSqlInstance=panic-notification-system:us-central1:panicdb&socketFactory=com.google.cloud.sql.postgres.SocketFactory}
+            username: ${DB_USERNAME}
+            password: ${DB_PASSWORD}
             driverClassName: org.postgresql.Driver
             hikari:
               minimum-idle: 2
@@ -26,7 +26,7 @@ spring:
         ddl-auto: update
       properties:
         hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+      show-sql: true
 
 admin-key: ${ADMIN_KEY:a7Dg5zK9xH}
-
 

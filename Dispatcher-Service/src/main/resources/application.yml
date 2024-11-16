@@ -2,6 +2,7 @@ spring:
     application:
         name: Dispatcher-Service
     rabbitmq:
-        addresses: localhost:5672
-server:
-    port: 8443
+        host: ${RABBITMQ_IP:34.45.188.216}
+        port: 5672
+        username: ${RABBITMQ_USERNAME}
+        password: ${RABBITMQ_PASSWORD}

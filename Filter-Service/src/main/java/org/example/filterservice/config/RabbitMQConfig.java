@@ -12,20 +12,19 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RabbitMQConfig {
 
-    @Value("${rabbit.mq.pre-filter-queue}")
+    @Value("${custom.rabbitmq.pre-filter-queue}")
     public String preFilterQueue;
 
-    @Value("${rabbit.mq.pre-filter-routing-key}")
+    @Value("${custom.rabbitmq.pre-filter-routing-key}")
     public String preFilterRoutingKey;
 
-    @Value("${rabbit.mq.post-filter-queue}")
+    @Value("${custom.rabbitmq.post-filter-queue}")
     public String postFilterQueue;
 
-    @Value("${rabbit.mq.post-filter-routing-key}")
+    @Value("${custom.rabbitmq.post-filter-routing-key}")
     public String postFilterRoutingKey;
 
-    @Value("${rabbit.mq.exchange}")
-    public String exchange;
+    public String exchange = "exchange" ;
 
     @Bean
     public Queue preFilterQueue() {

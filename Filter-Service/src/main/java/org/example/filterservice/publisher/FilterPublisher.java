@@ -11,10 +11,10 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class FilterPublisher {
 
-    @Value("${rabbit.mq.exchange}")
-    public String exchange;
 
-    @Value("${rabbit.mq.post-filter-routing-key}")
+    public String exchange = "exchange";
+
+    @Value("${custom.rabbitmq.post-filter-routing-key}")
     public String postFilterRoutingKey;
 
     @Autowired

@@ -9,6 +9,11 @@ a notification system utilizes a fast callback mechanism through a message queue
 <img src="Panic_db.png" width="400" height="300"> 
 
 
-<h2>Base URLs ☁️ </h2>
-Panic Notification Service : https://panic-notification-service-2-69887867641.us-central1.run.app 
-//comming soon hopefully 
+<h2>Deployment ☁️ </h2>
+<img src="GCP.png" width="640" height="320"> 
+
+- **4 services** as containers using Google Cloud Run.
+- **PostgreSQL database** hosted on Google Cloud's **Cloud SQL**.
+- **RabbitMQ** installed on Google Compute Engine.
+- **Cloud Function** for testing callback, triggered by HTTP requests.
+
